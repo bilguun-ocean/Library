@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400&display=swap');
+
+/* CSS RESET */
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'JetBrains Mono','Courier New', Courier, monospace;
+}
+
+/* GENERAL */
+
+:root {
+  --container-width: 1200px;
+  --Xsmall-gap: 10px;
+  --small-gap: 20px;
+  --medium-gap: 35px;
+  --large-gap: 45px;
+  --slight-gray: rgb(243, 238, 238);
+  --small-padding: 10px;
+  --slight-box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+body {
+  background-color: var(--slight-gray);
+}
+/* FOOTER SUPPORT */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
+/* HEADER */
+
+header {
+  box-shadow:var(--slight-box-shadow);
+  background-color: white;
+
+}
+
+header .container {
+  display: flex;
+  gap: var(--small-gap);
+  padding: var(--small-padding);
+}
+
+header .container > img {
+  width: 40px;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: white;
+  padding: var(--small-padding);
+  text-align: center;
+  box-shadow: var(--slight-box-shadow);
+}
+
+/* UTILS */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: var(--slight-box-shadow); 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--Xsmall-gap);
+  padding: var(--small-padding);
+  background-color: white;
+}
+
+.add-btn {
+  appearance: none;
+  border: none;
+  background-color: white;
+  padding: 20px 30px;
+  font-size: 6em;
+  color: rgb(60, 60, 60);
+  border-radius: 8px;
+  box-shadow: var(--slight-box-shadow);
+}
+
+button {
+  appearance: none;
+  border-radius: 5px;
+}
+
+.add-btn:hover {
+  filter: brightness(92%);
+  cursor: pointer;
+}
+
+.rmv-btn:hover {
+  background-color: rgb(253, 150, 150);
+}
+
+.read-btn {
+  background-color: greenyellow;
+}
+
+.read-btn:hover {
+  background-color: greenyellow;
+}
+
+
+.not-read-btn {
+  background-color: orange;
+}
+
+/* MAIN */
+ .grids {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: var(--large-gap) 0px;
+  gap: var(--large-gap);
+ }
+
+main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MODAL / POP-UP Form */
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.6);
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+
+.add-book-section{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px 30px ;
+  border-radius: 5px;
+}
+
+.modal-content {
+  width: 300px;
+  position: absolute;
+  z-index: 1;
+  align-self: center;
+  justify-self: center;
+  top: 30%;
+  display: none;
+}
+
+input + span {
+  position: relative;
+}
+
+input + span::after {
+  font-size: 10px;
+  position: absolute;
+  left: 5px;
+  top: -5px;
+}
+
+input:invalid + span::after {
+  content: "Required";
+  z-index: 1;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.close-button {
+  align-self: flex-end;
+  font-size: x-large;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  color: brown;
+}
+
+.submit-button {
+  margin-top: 10px;
+}
