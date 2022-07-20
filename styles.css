@@ -65,6 +65,10 @@ footer {
   padding: var(--small-padding);
   text-align: center;
   box-shadow: var(--slight-box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 /* UTILS */
@@ -207,4 +211,13 @@ input:invalid + span::after {
 
 .submit-button {
   margin-top: 10px;
+}
+
+.github-logo {
+  align-self: flex-end;
+  width: 20px;
+}
+
+.github-logo:hover {
+  filter: brightness(60%);
 }
