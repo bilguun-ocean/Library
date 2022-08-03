@@ -1,20 +1,33 @@
-let myLibrary = [];
+class Library {
+  constructor() {
+    this.books= []
+  }
 
-function Book(title, author, pages, read) {
-  // Constructor function here
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
+  addBook(book) {
+    this.books.push(book)
+  }
+
+  removeBook(title) {
+    this.books.splice(  )
+  }
 }
 
-Book.addBookToLibrary = function (title, author, pages, read) {
-  myLibrary.push(new Book(title, author, pages, read))
+let myLibrary = new Library
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+  }
 }
 
-Book.addBookToLibrary("Outliers", "Malcolm Gladwell", 270, true)
-Book.addBookToLibrary("Norwegian Woods", "Haruki Murakami", 310, true)
-Book.addBookToLibrary("The Lord Of The Rings: Fellowship Of Two Rings", "J.R.R Tolkien", 270, false)
+myLibrary.addBook(new Book("Outliers", "Malcolm Gladwell", 270, true))
+myLibrary.addBook(new Book("Norwegian Woods", "Haruki Murakami", 310, true))
+myLibrary.addBook(new Book("The Lord Of The Rings: Fellowship Of Two Rings", "J.R.R Tolkien", 270, false))
+
+
 
 function displayBook(Book){
   const container = document.getElementById("grids");
@@ -45,7 +58,7 @@ function displayBook(Book){
 
   //add eventListener to new book cards to remove
   removeButton.addEventListener("click", ()=> {
-    myLibrary.splice(removeButton.parentElement.dataset.index, 1)
+    myLibrary.books.splice(removeButton.parentElement.dataset.index, 1)
     removeButton.parentElement.remove()
     indexBookCards()
   })
@@ -62,7 +75,7 @@ function displayBook(Book){
 
 function indexBookCards() {
   // reason for backward indexing is bookCard are selected from backward somehow :P
-  let index = (myLibrary.length - 1)
+  let index = (myLibrary.books.length - 1)
   const allBookCards = document.getElementsByClassName("card")
   for(const bookCard of allBookCards) {
     bookCard.dataset.index = index
@@ -71,7 +84,7 @@ function indexBookCards() {
 }
 
 function displayLibrary(){
-  myLibrary.forEach(book => displayBook(book))
+  myLibrary.books.forEach(book => displayBook(book))
 }
 
 function displayReadStatus(book, button) {
@@ -102,7 +115,7 @@ function readStatusChanger(book, button) {
 
 function clearDisplayedBooks() {
   const displayedBooks = document.getElementsByClassName("card")
-  for (let i = 0; i < myLibrary.length; i++ ) {
+  for (let i = 0; i < myLibrary.books.length; i++ ) {
     displayedBooks[0].remove()
   }
 }
@@ -144,7 +157,7 @@ function submitBook() {
   const pages = parseInt(document.getElementById("book-form").elements.namedItem("pages").value)
   let read = document.getElementById("book-form").elements.namedItem("read-status").value
   read = (read === 'read') ? true : false
-  Book.addBookToLibrary(title, author, pages, read)
+  myLibrary.addBook(new Book(title, author, pages, read))
 }
 
 function removeBook() {
@@ -183,7 +196,7 @@ submitButton.addEventListener("click", ()=> {
   submitBook()
   hideModal()
   refreshForm()
-  displayBook(myLibrary[myLibrary.length - 1  ])
+  displayBook(myLibrary.books[myLibrary.books.length - 1  ])
   indexBookCards()
   } else {
     const requiredFields = document.getElementsByClassName("required-field")
